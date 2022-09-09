@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"><title>Covid Details</title><!-- Latest compiled and minified CSS -->
+
+
+</head>
+<body>
+
+    <h1>Covid_Information</h1>
+    <form method="post" action="/">
+    <input type="text" name="country_name" placeholder="Enter country name">
+    <button type="submit">Submit</button>
+
+</form>
+{% if data %}
+
+<h3>Total_Confirmed_cases={{data.Confirmed}}</h3>
+<h3>Total_Deaths={{data.Total_deaths}}</h3>
+
+
+    {% else %}
+    <h3>No data</h3>
+    {% endif %}
+
+
+</body>
+</html>
