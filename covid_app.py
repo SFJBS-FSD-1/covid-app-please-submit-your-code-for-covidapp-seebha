@@ -13,13 +13,18 @@ def covid_page():
         print(url)
         response = requests.get(url).json()
         print(response['Countries'])
-        for i in response['Countries']:
-            if i['Country']==country:
-                Total_Confirmed_cases=i['TotalConfirmed']
-                Total_Deaths=i['TotalDeaths']
-                break
-        data={'Confirmed':Total_Confirmed_cases,'Total_deaths':Total_Deaths}
-        return render_template("details.html",data=data)
+        if country=="":
+            return render_template("details.html", data=None)
+        else:
+            for i in response['Countries']:
+                if i['Country']==country:
+                    Total_Confirmed_cases=i['TotalConfirmed']
+                    Total_Deaths=i['TotalDeaths']
+                    break
+            else:
+                return render_template("details.html", data='not found')
+            data={'Country':country,'Confirmed':Total_Confirmed_cases,'Total_deaths':Total_Deaths}
+            return render_template("details.html",data=data)
     else:
         return render_template("details.html",data=None)
 

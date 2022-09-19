@@ -13,14 +13,16 @@
     <button type="submit">Submit</button>
 
 </form>
-{% if data %}
-
+{% if data== 'not found' %}
+    <h3>No such country!!!!</h3>
+    {% elif data %}
+    <h3>Country={{data.Country}}</h3>
 <h3>Total_Confirmed_cases={{data.Confirmed}}</h3>
 <h3>Total_Deaths={{data.Total_deaths}}</h3>
 
 
     {% else %}
-    <h3>No data</h3>
+
     {% endif %}
 
 
